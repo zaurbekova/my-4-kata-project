@@ -1,4 +1,5 @@
-import Swiper from 'swiper'
+import Swiper from 'swiper/bundle'
+import '../scss/style.scss'
 
 window.addEventListener('DOMContentLoaded', () => {
   const resizableSwiper = (
@@ -46,18 +47,22 @@ window.addEventListener('DOMContentLoaded', () => {
     { selector: '#SwiperThird' }
   ]
 
-  swipers.forEach((swiperData) => {
-    resizableSwiper(
-      '(max-width: 767px)',
-      swiperData.selector,
-      {
-        slidesPerView: 'auto',
-        spaceBetween: 20,
-        loop: true
-      },
-      onSlideChange
-    )
-  })
+swipers.forEach((swiperData) => {
+  resizableSwiper(
+    '(max-width: 767px)',
+    swiperData.selector,
+    {
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      loop: true,
+      pagination: {
+        el: `${swiperData.selector} .swiper-pagination`,
+        clickable: true
+      }
+    },
+    onSlideChange
+  )
+})
 
   var infoContent = document.querySelector('.info__content')
   var readMoreButton = null
