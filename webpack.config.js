@@ -7,7 +7,18 @@ module.exports = {
   entry: ['./src/js/index.js'],
 
   output: {
-    filename: './js/bundle.js'
+    filename: './js/bundle.js',
+    path: path.resolve(__dirname, 'dist') // Добавьте это
+  },
+
+  // ДОБАВЬТЕ ЭТОТ БЛОК:
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    port: 8080,
+    open: true,
+    hot: true,
+    compress: true,
+    watchContentBase: true
   },
 
   devtool: 'source-map',
